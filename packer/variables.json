@@ -1,0 +1,6 @@
+{
+    "project_id": "docker-201803",
+    "source_image_family": "ubuntu-minimal-1804-lts",
+    "machine_type": "f1-micro"
+  }
+  

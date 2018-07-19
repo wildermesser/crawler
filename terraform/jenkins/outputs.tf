@@ -1,4 +1,4 @@
-output "db_external_ip" {
+output "jenkins_external_ip" {
   value = "${google_compute_instance.jenkins.network_interface.0.access_config.0.assigned_nat_ip}"
 }
 
