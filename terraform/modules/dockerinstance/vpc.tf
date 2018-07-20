@@ -4,7 +4,7 @@ resource "google_compute_firewall" "instance_tcp" {
 
   allow {
     protocol = "tcp"
-    ports    = ["${var.tcp_ports}"]
+    ports    = "${var.tcp_ports}"
   }
 
   source_ranges = ["0.0.0.0/0"]
@@ -16,7 +16,7 @@ resource "google_dns_record_set" "instance_dns_name" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${var.dns_zone_name}"
+  managed_zone = "${var.managed_zone_name}"
 
   rrdatas = ["${google_compute_instance.instance.network_interface.0.access_config.0.assigned_nat_ip}"]
 }

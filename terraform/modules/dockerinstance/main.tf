@@ -35,7 +35,7 @@ resource "google_compute_instance" "instance" {
   provisioner "remote-exec" {
     inline = [
       "cd ~",
-      "docker-compose up -d",
+      "sudo docker-compose up -d",
     ]
   }
 }

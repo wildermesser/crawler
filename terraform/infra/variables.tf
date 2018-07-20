@@ -1,7 +1,3 @@
-variable "instance_name" {
-  description = "Name of instance"
-}
-
 variable public_key_path {
   description = "Path to the public key used to connect to instance"
 }
@@ -29,20 +25,11 @@ variable machine_type {
   default     = "g1-small"
 }
 
+variable project {
+  description = "Project ID"
+}
+
 variable region {
   description = "Region"
   default     = "europe-west1"
-}
-
-variable "dns_zone_name" {
-  description = "Dns domain ending with dot"
-}
-
-variable "tcp_ports" {
-  type        = "list"
-  description = "List of opened instance's tcp ports"
-}
-
-variable "managed_zone_name" {
-  description = "Dns managed zone name"
 }
