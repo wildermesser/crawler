@@ -1,14 +1,8 @@
-provider "google" {
-  project = "${var.project}"
-  region  = "${var.region}"
-  version = "1.16"
-}
-
-resource "google_compute_instance" "jenkins" {
-  name         = "jenkins"
+resource "google_compute_instance" "instance" {
+  name         = "${var.instance_name}"
   machine_type = "${var.machine_type}"
   zone         = "${var.zone}"
-  tags         = ["jenkins"]
+  tags         = ["${var.instance_name}"]
 
   boot_disk {
     initialize_params {
@@ -33,7 +27,15 @@ resource "google_compute_instance" "jenkins" {
     private_key = "${file(var.private_key_path)}"
   }
 
+  provisioner "file" {
+    source      = "../../docker-compose/${var.instance_name}/docker-compose.yml"
+    destination = "/home/messer/docker-compose.yml"
+  }
+
   provisioner "remote-exec" {
-    script = "../files/install_docker.sh"
+    inline = [
+      "cd ~",
+      "docker-compose up -d",
+    ]
   }
 }

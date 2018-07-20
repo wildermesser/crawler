@@ -1,3 +1,7 @@
+variable "instance_name" {
+  description = "Name of instance"
+}
+
 variable public_key_path {
   description = "Path to the public key used to connect to instance"
 }
@@ -32,4 +36,12 @@ variable project {
 variable region {
   description = "Region"
   default     = "europe-west1"
+}
+
+variable "dns_zone_name" {
+  description = "Dns managed zone name"
+}
+
+variable "tcp_ports" {
+  description = "List of opened instance's tcp ports"
 }
