@@ -3,6 +3,7 @@ services:
   jenkins:
     image: jenkinsci/blueocean
     privileged: true
+    restart: on-failure
     volumes:
       - jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
