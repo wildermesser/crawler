@@ -1,0 +1,39 @@
+---
+version: '3.3'
+services:
+  crawler:
+    image: wildermesser/crawler:latest
+    environment:
+      RMQ_PASSWORD: crawler
+    networks:
+      - crawler_net
+  mongodb:
+    image: mongo
+    volumes:
+      - mongo_data:/data/sb
+    networks:
+      - crawler_net
+  rabbitmq:
+    image: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: crawler
+      RABBITMQ_DEFAULT_PASS: crawler
+    networks:
+      - crawler_net
+  ui:
+    image: wildermesser/ui:latest
+    networks: 
+      - crawler_net
+    ports:
+      - 8000:8000
+
+networks:
+  crawler_net:
+
+volumes:
+  mongo_data:
+
+
+
+
+  
