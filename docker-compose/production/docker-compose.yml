@@ -3,6 +3,10 @@ version: '3.3'
 services:
   crawler:
     image: wildermesser/crawler:latest
+    depends_on:
+      - mongodb
+      - rabbitmq
+    command: sh -c './wait-for rabbitmq:5672 -t 120 -- python crawler.py https://vitkhab.github.io/search_engine_test_site/'
     environment:
       RMQ_PASSWORD: crawler
     networks:
@@ -22,6 +26,8 @@ services:
       - crawler_net
   ui:
     image: wildermesser/ui:latest
+    depends_on:
+      - crawler
     networks: 
       - crawler_net
     ports:
