@@ -1,0 +1,54 @@
+
+version: '3.3'
+services:
+  telegraf:
+    image: telegraf:1.7-alpine
+    command: -config /etc/telegraf/telegraf.conf 
+    restart: always
+    environment:
+      HOST_PROC: '/host/proc'
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /proc:/host /proc
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - influxdb
+    networks:
+      - monitoring_net
+
+  influxdb:
+    image: influxdb:1.5-alpine
+    restart: always
+    volumes:
+      - ./volumes/influxdb:/var/lib/influxdb:rw
+    networks:
+      - monitoring_net
+
+  chronograf:
+    image: chronograf:1.5-alpine
+    restart: always
+    command: chronograf --influxdb-url=http://influxdb:8086
+    volumes:
+      - ./volumes/chronograf:/var/lib/chronograf:rw
+    depends_on:
+      - influxdb
+    ports:
+      - 8888:8888
+    networks:
+      - monitoring_net
+
+  kapacitor:
+    image: kapacitor:1.5-alpine
+    restart: always
+    environment:
+      - KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086
+    volumes:
+      - ./volumes/kapacitor:/var/lib/kapacitor:rw
+    depends_on:
+      - influxdb
+    networks:
+      - monitoring_net
+
+networks:
+  monitoring_net:
+

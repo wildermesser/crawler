@@ -28,14 +28,11 @@ resource "google_compute_instance" "instance" {
   }
 
   provisioner "file" {
-    source      = "../../docker-compose/${var.instance_name}/docker-compose.yml"
-    destination = "/home/messer/docker-compose.yml"
+    source      = "../../docker-compose/${var.instance_name}/"
+    destination = "~"
   }
 
   provisioner "remote-exec" {
-    inline = [
-      "cd ~",
-      "sudo docker-compose up -d",
-    ]
+    inline = "${var.remote_commands}"
   }
 }

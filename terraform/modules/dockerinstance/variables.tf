@@ -46,3 +46,8 @@ variable "tcp_ports" {
 variable "managed_zone_name" {
   description = "Dns managed zone name"
 }
+
+variable "remote_commands" {
+  type        = "list"
+  description = "List of remote commands to execute"
+}

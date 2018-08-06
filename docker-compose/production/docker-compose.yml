@@ -3,6 +3,7 @@ version: '3.3'
 services:
   crawler:
     image: wildermesser/crawler:latest
+    restart: always
     depends_on:
       - mongodb
       - rabbitmq
@@ -13,12 +14,14 @@ services:
       - crawler_net
   mongodb:
     image: mongo
+    restart: always
     volumes:
       - mongo_data:/data/sb
     networks:
       - crawler_net
   rabbitmq:
     image: rabbitmq
+    restart: always
     environment:
       RABBITMQ_DEFAULT_USER: crawler
       RABBITMQ_DEFAULT_PASS: crawler
@@ -26,6 +29,7 @@ services:
       - crawler_net
   ui:
     image: wildermesser/ui:latest
+    restart: always
     depends_on:
       - crawler
     networks: 
