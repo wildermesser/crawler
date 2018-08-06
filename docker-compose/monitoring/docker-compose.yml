@@ -9,7 +9,7 @@ services:
       HOST_PROC: '/host/proc'
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
-      - /proc:/host /proc
+      - /proc:/host/proc
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - influxdb
@@ -33,7 +33,7 @@ services:
     depends_on:
       - influxdb
     ports:
-      - 8888:8888
+      - 80:8888
     networks:
       - monitoring_net
 

@@ -25,7 +25,7 @@ module "jenkins" {
 
   remote_commands = [
     "cd ~",
-    "sudo docker run -p 8080:8080 -u root -v /var/run/docker.sock:/var/run/docker.sock --restart always -v jenkins-data-1:/var/jenkins_home  jenkinsci/blueocean:latest",
+    "sudo docker run -p 8080:8080 -d -u root -v /var/run/docker.sock:/var/run/docker.sock --restart always -v jenkins-data-1:/var/jenkins_home  jenkinsci/blueocean:latest",
   ]
 }
 
@@ -42,6 +42,26 @@ module "production" {
   dns_zone_name     = "ocrawler.tk."
   managed_zone_name = "ocrawler"
   tcp_ports         = ["22", "8000"]
+
+  remote_commands = [
+    "cd ~",
+    "sudo docker-compose up -d",
+  ]
+}
+
+module "monitoring" {
+  source        = "../modules/dockerinstance"
+  instance_name = "monitoring"
+
+  public_key_path   = "${var.public_key_path}"
+  private_key_path  = "${var.private_key_path}"
+  zone              = "${var.zone}"
+  disk_image        = "${var.disk_image}"
+  disk_size         = "10"
+  machine_type      = "${var.machine_type}"
+  dns_zone_name     = "ocrawler.tk."
+  managed_zone_name = "ocrawler"
+  tcp_ports         = ["22", "80"]
 
   remote_commands = [
     "cd ~",
