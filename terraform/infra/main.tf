@@ -61,7 +61,7 @@ module "monitoring" {
   machine_type      = "${var.machine_type}"
   dns_zone_name     = "ocrawler.tk."
   managed_zone_name = "ocrawler"
-  tcp_ports         = ["22", "80"]
+  tcp_ports         = ["22", "80", "8086"]
 
   remote_commands = [
     "cd ~",
