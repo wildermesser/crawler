@@ -36,7 +36,19 @@ services:
       - crawler_net
     ports:
       - 8000:8000
-
+  telegraf:
+    image: telegraf:1.7-alpine
+    command: -config /etc/telegraf/telegraf.conf 
+    restart: always
+    environment:
+      - HOST_PROC=/host/proc
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /proc:/host/proc
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - crawler_net
+      
 networks:
   crawler_net:
 
