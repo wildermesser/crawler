@@ -68,3 +68,24 @@ module "monitoring" {
     "sudo docker-compose up -d",
   ]
 }
+
+module "logging" {
+  source        = "../modules/dockerinstance"
+  instance_name = "logging"
+
+  public_key_path   = "${var.public_key_path}"
+  private_key_path  = "${var.private_key_path}"
+  zone              = "${var.zone}"
+  disk_image        = "${var.disk_image}"
+  disk_size         = "10"
+  machine_type      = "n1-standard-1"
+  dns_zone_name     = "ocrawler.tk."
+  managed_zone_name = "ocrawler"
+  tcp_ports         = ["22", "80", "9200"]
+
+  remote_commands = [
+    "cd ~",
+    "sudo sysctl -w vm.max_map_count=262144",
+    "sudo docker-compose up -d",
+  ]
+}

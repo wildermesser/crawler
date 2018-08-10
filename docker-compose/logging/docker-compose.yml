@@ -5,6 +5,10 @@ services:
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     volumes:
       - esdata:/usr/share/elasticsearch/data
     ports:
@@ -13,7 +17,7 @@ services:
       - logging_net
 
   kibana:
-    image: kibana
+    image: docker.elastic.co/kibana/kibana:6.3.2
     ports:
       - "80:5601"
     environment:

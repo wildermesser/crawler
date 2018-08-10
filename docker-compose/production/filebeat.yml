@@ -1,0 +1,13 @@
+filebeat.inputs:
+- type: docker
+  containers.ids: '*'
+  json.keys_under_root: true
+  json.add_error_key: true
+  json.message_key: log
+  ignore_decoding_error: true
+
+output.elasticsearch:
+  hosts: ["logging.ocrawler.tk:9200"]
+
+setup.kibana:
+  host: "http://logging.ocrawler.tk:80" 
