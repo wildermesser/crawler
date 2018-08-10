@@ -1,0 +1,69 @@
+var db = 'telegraf'
+
+var rp = 'autogen'
+
+var measurement = 'cpu'
+
+var groupBy = []
+
+var whereFilter = lambda: ("host" != 'production.ocrawler.tk')
+
+var name = 'Cpu idle less than 80'
+
+var idVar = name
+
+var message = ' {{.Level}} CPU idle is {{ index .Fields "value" }} at  {{ index .Tags "host" }}'
+
+var idTag = 'alertID'
+
+var levelTag = 'level'
+
+var messageField = 'message'
+
+var durationField = 'duration'
+
+var outputDB = 'chronograf'
+
+var outputRP = 'autogen'
+
+var outputMeasurement = 'alerts'
+
+var triggerType = 'threshold'
+
+var crit = 80
+
+var data = stream
+    |from()
+        .database(db)
+        .retentionPolicy(rp)
+        .measurement(measurement)
+        .groupBy(groupBy)
+        .where(whereFilter)
+    |eval(lambda: "usage_idle")
+        .as('value')
+
+var trigger = data
+    |alert()
+        .crit(lambda: "value" < crit)
+        .message(message)
+        .id(idVar)
+        .idTag(idTag)
+        .levelTag(levelTag)
+        .messageField(messageField)
+        .durationField(durationField)
+        .slack()
+
+trigger
+    |eval(lambda: float("value"))
+        .as('value')
+        .keep()
+    |influxDBOut()
+        .create()
+        .database(outputDB)
+        .retentionPolicy(outputRP)
+        .measurement(outputMeasurement)
+        .tag('alertName', name)
+        .tag('triggerType', triggerType)
+
+trigger
+    |httpOut('output')

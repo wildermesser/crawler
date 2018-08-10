@@ -32,7 +32,7 @@ services:
       - monitoring_net
 
   chronograf:
-    image: chronograf:1.5-alpine
+    image: chronograf:1.6-alpine
     restart: always
     command: chronograf --influxdb-url=http://influxdb:8086
     volumes:
