@@ -725,6 +725,136 @@
 				"links": {
 					"self": "/chronograf/v1/dashboards/1/cells/2d1a1392-9a51-4b12-84ac-ac00784e71dc"
 				}
+			},
+			{
+				"i": "432d270c-fba0-4560-89f4-668f9f9a666e",
+				"x": 0,
+				"y": 8,
+				"w": 4,
+				"h": 4,
+				"name": "Время ответа UI",
+				"queries": [
+					{
+						"query": "SELECT mean(\"response_time\") AS \"mean_response_time\" FROM \"telegraf\".\"autogen\".\"http_response\" WHERE time > :dashboardTime: GROUP BY time(:interval:), \"server\" FILL(null)",
+						"queryConfig": {
+							"database": "telegraf",
+							"measurement": "http_response",
+							"retentionPolicy": "autogen",
+							"fields": [
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_response_time",
+									"args": [
+										{
+											"value": "response_time",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								}
+							],
+							"tags": {},
+							"groupBy": {
+								"time": "auto",
+								"tags": [
+									"server"
+								]
+							},
+							"areTagsAccepted": false,
+							"fill": "null",
+							"rawText": null,
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "c53d39d2-0fa4-4516-a025-4711589913ee",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "7d6e0130-b677-48f5-afd0-ee0b82cd7528",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "41f00cf6-9c27-4225-934a-137527277adf",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/1/cells/432d270c-fba0-4560-89f4-668f9f9a666e"
+				}
 			}
 		],
 		"templates": [],

@@ -20,7 +20,8 @@ services:
     networks:
       - crawler_net
   rabbitmq:
-    image: rabbitmq
+    image: rabbitmq:3-management
+    hostname: rabbitmq
     restart: always
     environment:
       RABBITMQ_DEFAULT_USER: crawler

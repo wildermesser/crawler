@@ -742,6 +742,588 @@
 				"links": {
 					"self": "/chronograf/v1/dashboards/2/cells/f6493047-539d-441a-9877-9dcd8a6719be"
 				}
+			},
+			{
+				"i": "391addf7-6636-413e-8d34-2e0a5dee9582",
+				"x": 8,
+				"y": 4,
+				"w": 4,
+				"h": 4,
+				"name": "MongoDB queries per sec",
+				"queries": [
+					{
+						"query": "SELECT mean(\"deletes_per_sec\") AS \"mean_deletes_per_sec\", mean(\"flushes_per_sec\") AS \"mean_flushes_per_sec\", mean(\"inserts_per_sec\") AS \"mean_inserts_per_sec\", mean(\"queries_per_sec\") AS \"mean_queries_per_sec\", mean(\"updates_per_sec\") AS \"mean_updates_per_sec\" FROM \"telegraf\".\"autogen\".\"mongodb\" WHERE time > :dashboardTime: GROUP BY time(:interval:) FILL(null)",
+						"queryConfig": {
+							"database": "telegraf",
+							"measurement": "mongodb",
+							"retentionPolicy": "autogen",
+							"fields": [
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_deletes_per_sec",
+									"args": [
+										{
+											"value": "deletes_per_sec",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								},
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_flushes_per_sec",
+									"args": [
+										{
+											"value": "flushes_per_sec",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								},
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_inserts_per_sec",
+									"args": [
+										{
+											"value": "inserts_per_sec",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								},
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_queries_per_sec",
+									"args": [
+										{
+											"value": "queries_per_sec",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								},
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_updates_per_sec",
+									"args": [
+										{
+											"value": "updates_per_sec",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								}
+							],
+							"tags": {},
+							"groupBy": {
+								"time": "auto",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"fill": "null",
+							"rawText": null,
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "5d36db9e-f1aa-4c60-b621-969e33609615",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "c3d08711-9a78-48e7-b49b-a47e980b5548",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "7839a329-c93f-4478-82e1-9f31e020bfda",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/2/cells/391addf7-6636-413e-8d34-2e0a5dee9582"
+				}
+			},
+			{
+				"i": "1d266d12-ffe5-48f8-868d-2b95bb7cb064",
+				"x": 0,
+				"y": 8,
+				"w": 4,
+				"h": 4,
+				"name": "Mongodb cache in percent",
+				"queries": [
+					{
+						"query": "SELECT mean(\"percent_cache_used\") AS \"mean_percent_cache_used\", mean(\"percent_cache_dirty\") AS \"mean_percent_cache_dirty\" FROM \"telegraf\".\"autogen\".\"mongodb\" WHERE time > :dashboardTime: GROUP BY time(:interval:) FILL(null)",
+						"queryConfig": {
+							"database": "telegraf",
+							"measurement": "mongodb",
+							"retentionPolicy": "autogen",
+							"fields": [
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_percent_cache_used",
+									"args": [
+										{
+											"value": "percent_cache_used",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								},
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_percent_cache_dirty",
+									"args": [
+										{
+											"value": "percent_cache_dirty",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								}
+							],
+							"tags": {},
+							"groupBy": {
+								"time": "auto",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"fill": "null",
+							"rawText": null,
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "e2004584-bc3f-422f-9df4-5db315c072e8",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "e75e146e-2e0d-43e8-83ee-5057dfcd4a5f",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "00c1ecaf-b3f0-4003-85f3-e6170544ea29",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/2/cells/1d266d12-ffe5-48f8-868d-2b95bb7cb064"
+				}
+			},
+			{
+				"i": "2cd484f0-3b40-4f4c-b2b4-049555a3967b",
+				"x": 4,
+				"y": 8,
+				"w": 4,
+				"h": 4,
+				"name": "MongoDB network stats",
+				"queries": [
+					{
+						"query": "SELECT mean(\"net_out_bytes\") AS \"mean_net_out_bytes\", mean(\"net_in_bytes\") AS \"mean_net_in_bytes\", mean(\"open_connections\") AS \"mean_open_connections\" FROM \"telegraf\".\"autogen\".\"mongodb\" WHERE time > :dashboardTime: GROUP BY time(:interval:) FILL(null)",
+						"queryConfig": {
+							"database": "telegraf",
+							"measurement": "mongodb",
+							"retentionPolicy": "autogen",
+							"fields": [
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_net_out_bytes",
+									"args": [
+										{
+											"value": "net_out_bytes",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								},
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_net_in_bytes",
+									"args": [
+										{
+											"value": "net_in_bytes",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								},
+								{
+									"value": "mean",
+									"type": "func",
+									"alias": "mean_open_connections",
+									"args": [
+										{
+											"value": "open_connections",
+											"type": "field",
+											"alias": ""
+										}
+									]
+								}
+							],
+							"tags": {},
+							"groupBy": {
+								"time": "auto",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"fill": "null",
+							"rawText": null,
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "74768567-5249-4272-a3e4-b3c05176ab94",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "02b010d4-0161-4369-b207-11ef26a7bc46",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "c6c509aa-7486-4b6d-942d-d4ec65ff31f8",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/2/cells/2cd484f0-3b40-4f4c-b2b4-049555a3967b"
+				}
+			},
+			{
+				"i": "469e5c21-b06a-459a-a600-14b975731e2d",
+				"x": 8,
+				"y": 8,
+				"w": 4,
+				"h": 4,
+				"name": "RabbitMQ messages per sec",
+				"queries": [
+					{
+						"query": "SELECT derivative(\"messages\") AS \"mean_messages\", derivative(\"messages_acked\") AS \"mean_messages_acked\", derivative(\"messages_delivered\") AS \"mean_messages_delivered\", derivative(\"messages_delivered_get\") AS \"mean_messages_delivered_get\", derivative(\"messages_published\") AS \"mean_messages_published\", derivative(\"messages_ready\") AS \"mean_messages_ready\", derivative(\"messages_unacked\") AS \"mean_messages_unacked\" FROM \"telegraf\".\"autogen\".\"rabbitmq_overview\" WHERE time > :dashboardTime: ",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT derivative(\"messages\") AS \"mean_messages\", derivative(\"messages_acked\") AS \"mean_messages_acked\", derivative(\"messages_delivered\") AS \"mean_messages_delivered\", derivative(\"messages_delivered_get\") AS \"mean_messages_delivered_get\", derivative(\"messages_published\") AS \"mean_messages_published\", derivative(\"messages_ready\") AS \"mean_messages_ready\", derivative(\"messages_unacked\") AS \"mean_messages_unacked\" FROM \"telegraf\".\"autogen\".\"rabbitmq_overview\" WHERE time > :dashboardTime: ",
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "c53d39d2-0fa4-4516-a025-4711589913ee",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "7d6e0130-b677-48f5-afd0-ee0b82cd7528",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "41f00cf6-9c27-4225-934a-137527277adf",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/2/cells/469e5c21-b06a-459a-a600-14b975731e2d"
+				}
 			}
 		],
 		"templates": [],
