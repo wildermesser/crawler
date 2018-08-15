@@ -10,7 +10,7 @@ resource "google_dns_managed_zone" "ocrawler" {
 }
 
 module "jenkins" {
-  source        = "../modules/dockerinstance"
+  source        = "github.com/wildermesser/dockerinstance"
   instance_name = "jenkins"
 
   public_key_path   = "${var.public_key_path}"
@@ -30,7 +30,7 @@ module "jenkins" {
 }
 
 module "production" {
-  source        = "../modules/dockerinstance"
+  source        = "github.com/wildermesser/dockerinstance"
   instance_name = "production"
 
   public_key_path   = "${var.public_key_path}"
@@ -53,7 +53,7 @@ module "production" {
 }
 
 module "monitoring" {
-  source        = "../modules/dockerinstance"
+  source        = "github.com/wildermesser/dockerinstance"
   instance_name = "monitoring"
 
   public_key_path   = "${var.public_key_path}"
@@ -73,7 +73,7 @@ module "monitoring" {
 }
 
 module "logging" {
-  source        = "../modules/dockerinstance"
+  source        = "github.com/wildermesser/dockerinstance"
   instance_name = "logging"
 
   public_key_path   = "${var.public_key_path}"
