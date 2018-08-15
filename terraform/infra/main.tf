@@ -22,6 +22,7 @@ module "jenkins" {
   dns_zone_name     = "ocrawler.tk."
   managed_zone_name = "ocrawler"
   tcp_ports         = ["22", "8080"]
+  files_dir         = "../../docker-compose/${var.instance_name}/"
 
   remote_commands = [
     "cd ~",
@@ -42,6 +43,7 @@ module "production" {
   dns_zone_name     = "ocrawler.tk."
   managed_zone_name = "ocrawler"
   tcp_ports         = ["22", "8000"]
+  files_dir         = "../../docker-compose/${var.instance_name}/"
 
   remote_commands = [
     "cd ~",
@@ -65,6 +67,7 @@ module "monitoring" {
   dns_zone_name     = "ocrawler.tk."
   managed_zone_name = "ocrawler"
   tcp_ports         = ["22", "80", "8086"]
+  files_dir         = "../../docker-compose/${var.instance_name}/"
 
   remote_commands = [
     "cd ~",
@@ -85,6 +88,7 @@ module "logging" {
   dns_zone_name     = "ocrawler.tk."
   managed_zone_name = "ocrawler"
   tcp_ports         = ["22", "80", "9200"]
+  files_dir         = "../../docker-compose/${var.instance_name}/"
 
   remote_commands = [
     "cd ~",
